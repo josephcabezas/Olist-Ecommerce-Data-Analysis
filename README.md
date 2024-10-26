@@ -4,26 +4,30 @@
 
 ## Table of Contents:
 1. [Project Background](#project-background)
-2. [Targeted Insights](#targeted-insights)
-3. [Data Visualizations](#data-visualizations)
-4. [Executive Summary](#executive-summary)
+2. [Data Structure](#data-structure)
+3. [Targeted Insights](#targeted-insights)
+4. [Data Visualizations](#data-visualizations)
 5. [Recommendations](#recommendations)
 
 # Project Background
 [Back to Table of Contents](#table-of-contents)
 
-Olist, a major Brazilian e-commerce platform, connects small businesses and sellers with larger online marketplaces across Brazil. They are often called the Amazon of Latin America. As Olist scales, it faces operational challenges, particularly in optimizing order fulfillment, customer satisfaction, and vendor performance. These challenges arise from the complex dynamics of order statuses, payment methods, freight logistics, and regional customer preferences.
+Olist, a major Brazilian e-commerce platform, connects small businesses and sellers with larger online marketplaces across Brazil. They are often called the Amazon of Latin America. As Olist scales, it faces strategic challenges, particularly how to best allocate resources optimize product performance, customer satisfaction, and seller success.
+To answer this pressing issue, Olist has collected a wide breadth of data regarding their e-commerce platform, and the goal of this project will be to analyze that data and extract key business insights. It is important to note that this is real commercial data, however, it has been anonymised, and references to the companies and partners in the review text have been replaced to preserve privacy.
 
-This project conducts a focused SQL-based analysis on a dataset of 99,441 orders from March 2016 to August 2018, using relational database queries to extract key insights. The database schema can viewed below. Key areas of analysis include order completion rates, payment trends, freight efficiency, geographic purchasing patterns, and customer review sentiment. It is important to note that this is real commercial data, it has been anonymised, and references to the companies and partners in the review text have been replaced to preserve security.
+This project conducts a focused SQL-based e-commerce analysis on a dataset of 99,441 orders from March 2016 to August 2018, using relational database queries to uncover critical insights and business metrics. The analysis will cover the following major areas: number of orders, order prices, product categories, sales forecasts, order deliveries, order reviews, customer segmentation, product groupings, seller profiles, and lead conversions. A summary of targeted insights will then be compiled based on the results of the analysis.
+
+By examining and visualizing Olist’s e-commerce and customer data, this project aims to uncover meaningful trends and insights across Olist's products, customers, and sellers. The findings will provide Olist with a clearer understanding of marketplace dynamics, customer preferences, and seller challenges, helping the company identify strategic opportunities for operational improvements and profitable growth.
+
+# Data Structure
+[Back to Table of Contents](#table-of-contents)
+
+Olist's database structure can be seen below in the entity relationship diagram (ERD). It consists of 11 tables in a SQLite file: orders, order_items, order_payments, order_reviews, products, prodyct_category_name_translation, customers, geolocation, sellers, leads_qualified, and leads_closed. Prior to beginning the analysis, a variety of checks were conducted for quality control and and familiarization with the datasets.
 
 ![schema](presentation/olist_schema.png)
 
-By analyzing Olist’s e-commerce and customer data, this project aims to uncover meaningful trends and insights across areas such as order behavior, payment methods, and customer satisfaction. The findings will provide Olist with a clearer understanding of marketplace dynamics, operational challenges, and customer preferences, helping the company identify opportunities for operational improvements and profitable growth.
-
 # Targeted Insights
 [Back to Table of Contents](#table-of-contents)
-
-The following insights were discovered through careful analysis of the Olist dataset in SQL. The full queries that led to these conclusions can all be found [here](sql).
 
 **Summary of Targeted Insights:**
 
@@ -71,24 +75,31 @@ The following insights were discovered through careful analysis of the Olist dat
 
 **Lead Conversion**
 - Only a small proportion of qualified leads become Olist sellers
-- The largest sources of qualified leads are organic and paid search
-- Despite still being low, organic and paid search have the best conversion rate of all the lead sources
+- The largest sources of qualified leads are organic and paid search, which are also among the best conversion rates
+- The source with the best conversion rate is listed as unknown
+
+The following insights were discovered through careful analysis of the Olist dataset in SQL. The queries that led to these conclusions can all be found [here](sql).
 
 # Data Visualizations
 [Back to Table of Contents](#table-of-contents)
 
-![python](presentation/olist_dashboard.jpg)
+![img](presentation/p_olist_sales.png)
+![img](presentation/p_olist_treemap.png)
+![img](presentation/p_olist_city_delivery.png)
+![img](presentation/p_olist_heatmap.png)
+![img](presentation/p_olist_leads.png)
 
-The data visualization above was created in python with Matplotlib and Seaborn with respect to the intelligence gathered in the [Targeted Sights](targeted-insights) section. The full notebook and code can be found [here](python/olist_eda.ipynb).
-
-# Executive Summary
-[Back to Table of Contents](#table-of-contents)
-
-1. 
+The data visualizations above were created in python with Matplotlib and Seaborn with respect to the intelligence gathered in the [Targeted Sights](targeted-insights) section. The full notebook and code with even more visualizations can be found [here](python/olist_eda.ipynb).
 
 # Recommendations
 [Back to Table of Contents](#table-of-contents)
 
 Based on the uncovered insights, the following recommendations have been provided:
 
-1.
+1. **Optimize Product Offerings:** Reassess the stagnant product categories, such as fashion shoes and flowers, and consider reallocating resources toward consistently high-performing categories like health and beauty or seasonal items with high sales potential. In regards to low-demand categories, the questions remains: should these products be scaled back or phased out? A deeper cost-benefit analysis is required to provide a definitive answer.
+
+2. **Enhance Delivery Logistics:** Prioritize logistics improvements in cities with slower delivery times, Rio de Janeiro, Porto Alegre, and Salvador, to address the primary source of negative reviews. Rio de Janeiro especially is high priority due to the city having the second largest order volume of Olist cities. Plans must be made to assess partnerships with local carriers, investigate options for distribution centers closer to high-demand regions, and perform seasonal forecasting to mitigate December delays.
+
+3. **Increase Customer Retention:** Because repeat customers are relatively low, implement retention strategies such as, loyalty programs, targeted email campaigns, or exclusive deals to convert one-time buyers into repeat customers. Conduct A/B tests to identify which retention strategies yield the highest engagement and repeat purchase rates. based on the data, answer these questions: What incentives would encourage one-time customers to return? Is there a common thread between repeat customers that can be taken advantage of?
+
+4. **Refine Lead Conversion Strategy:** Focus marketing efforts on organic and paid search channels, which yield the highest conversion rates, while optimizing the seller onboarding process to improve conversion rates from qualified leads. Questions to investigate include: what are barriers in the current onboarding process? What are the main lead drop-off points? What are the factors that influence why certain leads convert or do not convert? Based on the results of this investigation, adjust marketing messaging to highlight Olist’s value proposition to prospective sellers.
